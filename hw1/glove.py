@@ -139,7 +139,7 @@ def glove_model(dat, iteration, batch_size, learning_rate, alpha, x_max, vector_
 			if state[0]:
 				print >> sys.stderr, progress_bar(state[1]),
 
-		print >> sys.stderr, '\r>>> cost : '+str(avg_cost)+'\n'
+		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
 	return sess.run(wi), sess.run(wj)
 
