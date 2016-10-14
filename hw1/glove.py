@@ -104,20 +104,26 @@ def glove_model(dat, iteration, batch_size, learning_rate, alpha, x_max, vector_
 	xij = tf.placeholder(tf.float32, [None, 1])
 	weight = tf.placeholder(tf.float32, [None, 1])
 
-	wi = tf.Variable(tf.random_normal([vocab_size, vector_size]))
-	wj = tf.Variable(tf.random_normal([vocab_size, vector_size]))
-	bi = tf.Variable(tf.zeros([vocab_size, 1]))
-	bj = tf.Variable(tf.zeros([vocab_size, 1]))
+	with tf.device('/cpu:0'):
+		wi = tf.Variable(tf.random_normal([vocab_size, vector_size], -.1, .1))
+		wj = tf.Variable(tf.random_normal([vocab_size, vector_size], -.1, .1))
+		bi = tf.Variable(tf.zeros([vocab_size, 1]))
+		bj = tf.Variable(tf.zeros([vocab_size, 1]))
 
-	pred = tf.reduce_sum(tf.mul(tf.gather(wi, v_pair[:, 0]), tf.gather(wj, v_pair[:, 1])), reduction_indices=1, keep_dims=True) + tf.gather(bi, v_pair[:, 0]) + tf.gather(bj, v_pair[:, 1])
+		emwi = tf.nn.embedding_lookup(wi, v_pair[:, 0])
+		emwj = tf.nn.embedding_lookup(wj, v_pair[:, 1])
 
-	cost = tf.reduce_sum(tf.mul(weight, tf.pow(pred - tf.log(xij), 2)))
+		embi = tf.nn.embedding_lookup(bi, v_pair[:, 0])
+		embj = tf.nn.embedding_lookup(bj, v_pair[:, 1])
+
+
+	pred = tf.reduce_sum(tf.mul(emwi, emwj), reduction_indices=1, keep_dims=True) + embi + embj
+
+	cost = tf.reduce_mean(tf.mul(weight, tf.pow(pred - tf.log(xij), 2)))
 
 	optimizer = tf.train.AdagradOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
-
-	
 
 	sess = tf.Session()
 	sess.run(init)
@@ -155,7 +161,7 @@ def main():
 
 	dat = Data(train)
 
-	wi, wj = glove_model(dat=dat, iteration=50, batch_size=200, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=100, vocab_size=len(v2i))
+	wi, wj = glove_model(dat=dat, iteration=50, batch_size=100, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=100, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, wi, wj)
 

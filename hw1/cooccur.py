@@ -251,7 +251,7 @@ def main():
 
 	w2i, i2w = vocab_indeing(vocab_list)
 
-	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=10, vocab=vocab_list, symmetric=True, dumpAll=True)
+	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=5, vocab=vocab_list, symmetric=True, dumpAll=True)
 
 if __name__ == '__main__':
 
