@@ -159,7 +159,7 @@ def shuffle_cooccur(args):
 
 def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=True):
 
-	cooccur = dict()
+	cooccur = []
 	file_num = 0
 	with open(args.corpus, 'r') as f:
 		while True:
@@ -170,42 +170,42 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 			tokens = line.strip().split()
 
 			total = len(tokens)
-			window = [-1]*window_size
-			tail = 0
+			i_tokens = []
+			for v in tokens:
+				vid = w2i.get(v, -1)
+				i_tokens.append(vid)
+			tokens = []
 
-			for i, token in enumerate(tokens):
-				if token == '\n':
-					tail = 0
+			for index, c_i in enumerate(i_tokens):
+				if c_i < 0:
 					continue
+				lr = np.random.randint(window_size, size=1)[0] + 1
+				rr = np.random.randint(window_size, size=1)[0] + 1
+				if c_i - lr >= 0:
+					for i in range(c_i-lr, c_i):
+						if i_tokens[i] >= 0:
+							cooccur.append([c_i, i_tokens[i]])
+				else:
+					for i in range(0, c_i):
+						if i_tokens[i] >= 0:
+							cooccur.append([c_i, i_tokens[i]])
 
-				w2 = w2i.get(token, -1)
-				# if w2 == -1:
-				# 	continue
+				if c_i + rr < len(i_tokens):
+					for i in range(c_i+1, c_i+rr+1):
+						if i_tokens[i] >= 0:
+							cooccur.append([c_i, i_tokens[i]])
+				else:
+					for i in range(c_i+1, len(i_tokens)):
+						if i_tokens[i] >= 0:
+							cooccur.append([c_i, i_tokens[i]])
 
-				current = tail - 1
-				head = tail - window_size - 1 if tail > window_size else 0 - 1
-
-				for index in range(current, head, -1):
-					w1 = window[index%window_size]
-
-					if w1 != -1 and w2 != -1:
-						cooccur[(w1, w2)] = 1
-						cooccur[(w2, w1)] = 1
-
-				window[tail%window_size] = w2
-				tail += 1
-
-				print >> sys.stderr, '\rdone process '+str(i)+'/'+str(total)+' tokens in currnet line',
+				print >> sys.stderr, '\rdone process '+str(index)+'/'+str(total)+' tokens in currnet line',
 
 			print >> sys.stderr, ''
 	
 	
 	if len(cooccur) > 0 and dumpAll:
-		cooccur_list = []
-		for k, v in cooccur.iteritems():
-			cooccur_list.append([k[0], k[1]])
-		cooccur = {}
-		np_cooccur = np.array(cooccur_list)
+		np_cooccur = np.array(cooccur)
 		np.random.shuffle(np_cooccur)
 		np.save(args.contextword+'.npz', np_cooccur)
 
@@ -220,7 +220,7 @@ def main():
 
 	w2i, i2w = vocab_indeing(vocab_list)
 
-	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=2, vocab=vocab_list, dumpAll=True)
+	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=5, vocab=vocab_list, dumpAll=True)
 
 if __name__ == '__main__':
 	main()

@@ -4,30 +4,70 @@ import numpy as np
 import sys
 
 class Data(object):
-	def __init__(self, train):
-		self.train = train
+	def __init__(self, args, v2i, window_size):
+		self.tokens = self.load_corpus(args.corpus, v2i)
+		self.window = window_size
 		self.current = 0
-		self.length = len(self.train)
 		self.iteration = 0
 		self.progress = 0
+		self.raw_batch = []
+	def load_corpus(self, corpus, v2i):
+		f = open(corpus, 'r')
+		tokens = []
+		i_tokens = []
+		for line in f.readlines():
+			seq = line.strip().split()
+			tokens += seq
+		for v in tokens:
+			vid = v2i.get(v, -1)
+			i_tokens.append(vid)
+		return i_tokens
+
 	def next_batch(self, size):
-		if self.current + size < self.length:
-			word, contextw = self.train[self.current : self.current + size, 0], self.train[self.current : self.current + size, 1][None,:].T
-			self.current += size
-			state = (False, self.progress)
-			if int(float(self.current+1)/float(self.length)*100) >= self.progress*5:
-				state = (True, self.progress)
-				self.progress += 1
+		end = False
+		state = (False, self.progress)
+		while len(self.raw_batch) < size:
+			if self.tokens[self.current] < 0:
+				self.current += 1
+				continue
+			lr = np.random.randint(self.window, size=1)[0] + 1
+			rr = np.random.randint(self.window, size=1)[0] + 1
+			if self.current - lr >= 0:
+				for i in range(self.current-lr, self.current):
+					if self.tokens[i] >= 0:
+						self.raw_batch.append([self.tokens[self.current], self.tokens[i]])
+			else:
+				for i in range(0, self.current):
+					if self.tokens[i] >= 0:
+						self.raw_batch.append([self.tokens[self.current], self.tokens[i]])
 
-			return word.astype(int), contextw.astype(int), state
-		else:
-			word, contextw = self.train[self.current :, 0], self.train[self.current :, 1][None,:].T
+			if self.current + rr < len(self.tokens):
+				for i in range(self.current+1, self.current+rr+1):
+					if self.tokens[i] >= 0:
+						self.raw_batch.append([self.tokens[self.current], self.tokens[i]])
+			else:
+				for i in range(self.current+1, len(self.tokens)):
+					if self.tokens[i] >= 0:
+						self.raw_batch.append([self.tokens[self.current], self.tokens[i]])
 
-			self.current = 0
-			self.iteration += 1
-			self.progress = 0
-			np.random.shuffle(self.train)
-			return word.astype(int), contextw.astype(int), (True, 20)
+			self.current += 1
+			
+			if self.current >= len(self.tokens):
+				self.current = 0
+				self.iteration += 1
+				end = True
+				break
+
+		if int(float(self.current+1)/float(len(self.tokens))*100) >= self.progress*5:
+			state = (True, self.progress)
+			self.progress += 1
+			if self.progress > 20:
+				self.progress = 0
+
+		batch = np.array(self.raw_batch).astype(int)
+		self.raw_batch = []
+
+		return batch[:,0], batch[:,1][None,:].T, state, end
 
 def arg_parse():
 
@@ -104,18 +144,18 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 	for i in range(iteration):
 		avg_cost = 0.
 
-		batch_number = int(dat.length/batch_size) 
-		batch_number += 1 if dat.length%batch_size > 0 else 0
 		print >> sys.stderr, 'Iteration '+str(i)+' :'
-		for b in range(batch_number):
-			t_x, t_y, state = dat.next_batch(batch_size)
-			
+		while True:
+			t_x, t_y, state, end = dat.next_batch(batch_size)
+
 			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-			avg_cost += c/float(dat.length)
+			avg_cost += c/float(len(dat.tokens)*dat.window)
 			
-			if state[0]:
-				print >> sys.stderr, progress_bar(state[1]),
+			if state[0] or dat.current%10 == 0:
+				print >> sys.stderr, progress_bar(state[1])+' '+str(dat.current)+'/'+str(len(dat.tokens)),
+			if end:
+				break
 
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
@@ -129,9 +169,7 @@ def main():
 
 	v2i, i2v = vocab_indexing(vocab_list)
 
-	train = load_train_dat(args=args)
-
-	dat = Data(train)
+	dat = Data(args, v2i, window_size=5)
 
 	w_vector = skip_gram(dat=dat, sample_num=10, iteration=1, batch_size=100, learning_rate=0.05, vector_size=100, vocab_size=len(v2i))
 
