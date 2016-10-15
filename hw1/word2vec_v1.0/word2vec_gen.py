@@ -58,7 +58,7 @@ class Data(object):
 				end = True
 				break
 
-		if int(float(self.current+1)/float(len(self.tokens))*100) >= self.progress*5:
+		if int(float(self.current+1)/float(len(self.tokens))*100.) >= self.progress*5:
 			state = (True, self.progress)
 			self.progress += 1
 			if self.progress > 20:
@@ -143,21 +143,22 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	for i in range(iteration):
 		avg_cost = 0.
-
+		train_size = 0.
 		print >> sys.stderr, 'Iteration '+str(i)+' :'
 		while True:
 			t_x, t_y, state, end = dat.next_batch(batch_size)
 
 			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-			avg_cost += c/float(len(dat.tokens)*dat.window)
+			train_size += len(t_x)
+			avg_cost += c
 			
 			if state[0] or dat.current%10 == 0:
 				print >> sys.stderr, progress_bar(state[1])+' '+str(dat.current)+'/'+str(len(dat.tokens)),
 			if end:
 				break
 
-		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
+		print >> sys.stderr, '\r>>> cost : '+str(avg_cost/train_size) + '                                                   '
 
 	return sess.run(wordv)
 

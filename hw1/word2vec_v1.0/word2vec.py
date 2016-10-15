@@ -114,8 +114,8 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 			avg_cost += c/float(dat.length)
 			
-			if state[0]:
-				print >> sys.stderr, progress_bar(state[1]),
+			if state[0] or b%100 == 0:
+				print >> sys.stderr, progress_bar(state[1])+' '+str(b)+'/'+str(batch_number),
 
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
