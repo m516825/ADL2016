@@ -14,7 +14,7 @@ class Data(object):
 		if self.current + size < self.length:
 			vid, co = self.train[self.current : self.current + size, 0:2], self.train[self.current : self.current + size, 2][None,:].T
 			max_index = np.where(co >= 100.)[0]
-			weight = co**(3./4.)
+			weight = np.power(co, 3./4.)
 			weight[max_index] = 100.
 			self.current += size
 			state = (False, self.progress)
@@ -26,9 +26,9 @@ class Data(object):
 		else:
 			vid, co = self.train[self.current:, 0:2], self.train[self.current:, 2][None,:].T
 			max_index = np.where(co >= 100.)[0]
-			weight = co**(3./4.)
+			weight = np.power(co, 3./4.)
 			weight[max_index] = 100.
-
+			
 			self.current = 0
 			self.iteration += 1
 			self.progress = 0
@@ -40,9 +40,9 @@ def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
-	parser.add_argument('--train', default='./cooccur.npz.npy', type=str)
+	parser.add_argument('--train', default='./cooccur_w5.npz.npy', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
-	parser.add_argument('--vector', default='./vector.txt', type=str)
+	parser.add_argument('--vector', default='./g_vector.txt', type=str)
 	parser.add_argument('--vtype', default=1, type=int)
 	args = parser.parse_args()
 
@@ -161,7 +161,7 @@ def main():
 
 	dat = Data(train)
 
-	wi, wj = glove_model(dat=dat, iteration=50, batch_size=100, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=100, vocab_size=len(v2i))
+	wi, wj = glove_model(dat=dat, iteration=50, batch_size=200, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=100, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, wi, wj)
 
