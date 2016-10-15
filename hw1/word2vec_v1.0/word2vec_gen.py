@@ -162,6 +162,14 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	return sess.run(wordv)
 
+def dump_vector(args, vocab, w):
+
+	fout = open(args.vector, 'w')
+	for i, v in enumerate(vocab):
+		out = ' '.join([str(val) for val in w[i]])
+		out = v + ' ' + out + '\n'
+		fout.write(out)
+
 def main():
 
 	args = arg_parse()
@@ -173,6 +181,8 @@ def main():
 	dat = Data(args, v2i, window_size=5)
 
 	w_vector = skip_gram(dat=dat, sample_num=10, iteration=1, batch_size=100, learning_rate=0.05, vector_size=100, vocab_size=len(v2i))
+
+	dump_vector(args, vocab_list, w_vector)
 
 if __name__ == '__main__':
 
