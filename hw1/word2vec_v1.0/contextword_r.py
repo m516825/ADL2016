@@ -10,7 +10,7 @@ def arg_parse():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
-	parser.add_argument('--contextword', default='./skip_gram2', type=str)
+	parser.add_argument('--contextword', default='./skip_gram_r', type=str)
 	parser.add_argument('--sample', default=9e-17, type=float)
 	args = parser.parse_args()
 
@@ -210,7 +210,6 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, sum_c, i2c, dumpAll=True):
 	
 	if len(cooccur) > 0 and dumpAll:
 		np_cooccur = np.array(cooccur)
-		# np.random.shuffle(np_cooccur)
 		np.save(args.contextword+'.npz', np_cooccur)
 
 	print >> sys.stderr, 'done dumping cooccur file'

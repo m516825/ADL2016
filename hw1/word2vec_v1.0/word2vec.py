@@ -33,7 +33,7 @@ def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
-	parser.add_argument('--train', default='./skip_gram.npz.npy', type=str)
+	parser.add_argument('--train', default='./skip_gram_r.npz.npy', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
 	parser.add_argument('--vector', default='./w2_vector.txt', type=str)
 	args = parser.parse_args()
@@ -96,7 +96,7 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	cost = tf.reduce_mean(nce_loss)
 
-	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
+	optimizer = tf.train.AdagradOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
 
@@ -144,7 +144,7 @@ def main():
 
 	dat = Data(train)
 
-	w_vector = skip_gram(dat=dat, sample_num=10, iteration=2, batch_size=100, learning_rate=0.05, vector_size=100, vocab_size=len(v2i))
+	w_vector = skip_gram(dat=dat, sample_num=10, iteration=5, batch_size=100, learning_rate=0.025, vector_size=100, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, w_vector)
 
