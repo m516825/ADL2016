@@ -2,6 +2,7 @@ import argparse
 import tensorflow as tf
 import numpy as np
 import sys
+import math
 
 class Data(object):
 	def __init__(self, train):
@@ -88,41 +89,41 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 	with tf.device('/cpu:0'):
 		wordv = tf.Variable(tf.random_uniform([vocab_size, vector_size], -.1, .1))
 		emvt = tf.nn.embedding_lookup(wordv, train_x)
-	w_nce = tf.Variable(tf.random_uniform([vocab_size, vector_size], -.1, .1))
+	w_nce = tf.Variable(tf.truncated_normal([vocab_size, vector_size], stddev=1.0 / math.sqrt(vector_size)))
 	b_nce = tf.Variable(tf.zeros([vocab_size]))
 
 	nce_loss = tf.nn.nce_loss(weights=w_nce, biases=b_nce, inputs=emvt, labels=train_y, 
-				num_sampled=sample_num, num_classes=vocab_size, remove_accidental_hits=True)
+				num_sampled=sample_num, num_classes=vocab_size)
 
 	cost = tf.reduce_mean(nce_loss)
 
 	optimizer = tf.train.AdagradOptimizer(learning_rate).minimize(cost)
 
-	init = tf.initialize_all_variables()
+	# sess = tf.Session()
+	with tf.Session() as sess:
+		
+		init = tf.initialize_all_variables()
+		sess.run(init)
 
-	sess = tf.Session()
+		for i in range(iteration):
+			avg_cost = 0.
 
-	sess.run(init)
+			batch_number = int(dat.length/batch_size) 
+			batch_number += 1 if dat.length%batch_size > 0 else 0
+			print >> sys.stderr, 'Iteration '+str(i)+' :'
+			for b in range(batch_number):
+				t_x, t_y, state = dat.next_batch(batch_size)
+				
+				_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-	for i in range(iteration):
-		avg_cost = 0.
+				avg_cost += c/float(batch_number)
+				
+				if state[0] or b%100 == 0:
+					print >> sys.stderr, progress_bar(state)+' '+str(b)+'/'+str(batch_number),
 
-		batch_number = int(dat.length/batch_size) 
-		batch_number += 1 if dat.length%batch_size > 0 else 0
-		print >> sys.stderr, 'Iteration '+str(i)+' :'
-		for b in range(batch_number):
-			t_x, t_y, state = dat.next_batch(batch_size)
-			
-			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
+			print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
-			avg_cost += c/float(batch_number)
-			
-			if state[0] or b%100 == 0:
-				print >> sys.stderr, progress_bar(state)+' '+str(b)+'/'+str(batch_number),
-
-		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
-
-	return sess.run(wordv)
+		return wordv.eval()
 
 def dump_vector(args, vocab, w):
 
@@ -144,7 +145,7 @@ def main():
 
 	dat = Data(train)
 
-	w_vector = skip_gram(dat=dat, sample_num=15, iteration=3, batch_size=100, learning_rate=0.025, vector_size=100, vocab_size=len(v2i))
+	w_vector = skip_gram(dat=dat, sample_num=100, iteration=3, batch_size=50, learning_rate=0.25, vector_size=100, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, w_vector)
 
