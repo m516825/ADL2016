@@ -16,6 +16,7 @@ class Data(object):
 			max_index = np.where(co >= 100.)[0]
 			weight = np.power(co, 3./4.)
 			weight[max_index] = 100.
+			
 			self.current += size
 			state = (False, self.progress)
 			if int(float(self.current+1)/float(self.length)*100) >= self.progress*5:
@@ -28,7 +29,7 @@ class Data(object):
 			max_index = np.where(co >= 100.)[0]
 			weight = np.power(co, 3./4.)
 			weight[max_index] = 100.
-			
+
 			self.current = 0
 			self.iteration += 1
 			self.progress = 0
@@ -140,7 +141,7 @@ def glove_model(dat, iteration, batch_size, learning_rate, alpha, x_max, vector_
 			
 			_, c = sess.run([optimizer, cost], feed_dict={v_pair:pair, xij:co, weight:w})
 
-			avg_cost += c/float(dat.length)
+			avg_cost += c/float(batch_number)
 
 			if state[0]:
 				print >> sys.stderr, progress_bar(state[1]),

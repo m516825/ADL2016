@@ -179,8 +179,8 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 					continue
 
 				w2 = w2i.get(token, -1)
-				if w2 == -1:
-					continue
+				# if w2 == -1:
+				# 	continue
 
 				current = tail - 1
 				head = tail - window_size - 1 if tail > window_size else 0 - 1
@@ -188,9 +188,10 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 				for index in range(current, head, -1):
 					w1 = window[index%window_size]
 
-					cooccur[(w1, w2)] = cooccur.get((w1, w2), 0.) + 1./float(current-index+1)
-					if symmetric:
-						cooccur[(w2, w1)] = cooccur.get((w2, w1), 0.) + 1./float(current-index+1)
+					if w1 != -1 and w2 != -1:
+						cooccur[(w1, w2)] = cooccur.get((w1, w2), 0.) + 1./float(current-index+1)
+						if symmetric:
+							cooccur[(w2, w1)] = cooccur.get((w2, w1), 0.) + 1./float(current-index+1)
 
 				window[tail%window_size] = w2
 				tail += 1
@@ -229,8 +230,9 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 			for k, v in cooccur.iteritems():
 				cooccur_list.append([int(k[0]), int(k[1]), float(v)])
 			cooccur = {}
-			cooccur_list = shuffle(cooccur_list)
+			# cooccur_list = shuffle(cooccur_list)
 			np_cooccur = np.array(cooccur_list)
+			np.random.shuffle(np_cooccur)
 			np.save(args.cooccur+'.npz', np_cooccur)
 
 		print >> sys.stderr, 'done dumping cooccur file'
@@ -251,7 +253,7 @@ def main():
 
 	w2i, i2w = vocab_indeing(vocab_list)
 
-	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=5, vocab=vocab_list, symmetric=True, dumpAll=True)
+	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=10, vocab=vocab_list, symmetric=True, dumpAll=True)
 
 if __name__ == '__main__':
 

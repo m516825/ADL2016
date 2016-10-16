@@ -26,7 +26,7 @@ class Data(object):
 			self.current = 0
 			self.iteration += 1
 			self.progress = 0
-			np.random.shuffle(self.train)
+			# np.random.shuffle(self.train)
 			return word.astype(int), contextw.astype(int), (True, 20)
 
 def arg_parse():
@@ -144,7 +144,7 @@ def main():
 
 	dat = Data(train)
 
-	w_vector = skip_gram(dat=dat, sample_num=10, iteration=5, batch_size=100, learning_rate=0.025, vector_size=100, vocab_size=len(v2i))
+	w_vector = skip_gram(dat=dat, sample_num=15, iteration=3, batch_size=100, learning_rate=0.025, vector_size=100, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, w_vector)
 

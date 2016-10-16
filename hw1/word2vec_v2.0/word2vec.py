@@ -28,8 +28,7 @@ class Data(object):
 		sN_prob = 0.
 		sM_prob = 0. + m_p
 		aliasT = np.zeros(self.length * size) 
-		# m_t = np.zeros(self.length * size) + 1.
-		# m_t = m_t / float(self.length * size)
+	
 		j = 0
 		for i in range(self.length):
 			sN_prob += self.distribution[i]
@@ -122,10 +121,10 @@ def skip_gram(dat, sample_num, iteration, edge_sample, batch_size, learning_rate
 		for s in range(edge_sample):
 			t_x, t_y = dat.next_batch(batch_size)
 			
-			# _, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
+			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-			# avg_cost += c/float(edge_sample)
-			print s
+			avg_cost += c/float(edge_sample)
+			
 			if float(s+1)/float(edge_sample)*100. >= progress*5:
 				print >> sys.stderr, progress_bar(progress),
 				progress += 1
