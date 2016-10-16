@@ -10,12 +10,37 @@ class Data(object):
 		self.indexing = [i for i in range(len(train))]
 		self.current = 0
 		self.length = len(train)
+		self.table = self.build_aliasT(100)
 	def next_batch(self, size):
+		# index = np.random.choice(self.indexing, size, p=self.distribution) BUGBUG
+		index = []
+		while len(index) < size:
+			r = random.randint(0, self.length*100 - 1)
+			i = self.table[r]
+			index.append(i)
 
-		index = np.random.choice(self.indexing, size, p=self.distribution)
 		word, contextw = self.train[index, 0], self.train[index, 1][None, :].T
 
 		return word, contextw
+
+	def build_aliasT(self, size):
+		m_p = 1. / float(self.length * size)
+		sN_prob = 0.
+		sM_prob = 0. + m_p
+		aliasT = np.zeros(self.length * size) 
+		# m_t = np.zeros(self.length * size) + 1.
+		# m_t = m_t / float(self.length * size)
+		j = 0
+		for i in range(self.length):
+			sN_prob += self.distribution[i]
+			while sM_prob < sN_prob:
+				aliasT[j] = i
+				sM_prob += m_p
+				j += 1
+			print str(i)+'/'+str(self.length)
+		aliasT[self.length * size - 1] = self.length - 1
+
+		return aliasT.astype(int)
 
 def arg_parse():
 
@@ -81,7 +106,7 @@ def skip_gram(dat, sample_num, iteration, edge_sample, batch_size, learning_rate
 
 	cost = tf.reduce_mean(nce_loss)
 
-	optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
+	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
 
@@ -92,19 +117,20 @@ def skip_gram(dat, sample_num, iteration, edge_sample, batch_size, learning_rate
 	for i in range(iteration):
 		avg_cost = 0.
 		progress = 0
-		# batch_number = int(dat.length/batch_size) 
-		# batch_number += 1 if dat.length%batch_size > 0 else 0
+		
 		print >> sys.stderr, 'Iteration '+str(i)+' :'
 		for s in range(edge_sample):
 			t_x, t_y = dat.next_batch(batch_size)
 			
-			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
+			# _, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-			avg_cost += c/float(edge_sample*batch_size)
-
+			# avg_cost += c/float(edge_sample)
+			print s
 			if float(s+1)/float(edge_sample)*100. >= progress*5:
 				print >> sys.stderr, progress_bar(progress),
 				progress += 1
+			if s%100 == 0:
+				print >> sys.stderr, progress_bar(progress-1)+' '+str(s)+'/'+str(edge_sample),
 
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 

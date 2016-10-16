@@ -115,7 +115,7 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 			
 			_, c = sess.run([optimizer, cost], feed_dict={train_x:t_x, train_y:t_y})
 
-			avg_cost += c/float(dat.length)
+			avg_cost += c/float(batch_number)
 			
 			if state[0] or b%100 == 0:
 				print >> sys.stderr, progress_bar(state)+' '+str(b)+'/'+str(batch_number),
