@@ -137,7 +137,7 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	cost = tf.reduce_mean(nce_loss)
 
-	optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
+	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
 

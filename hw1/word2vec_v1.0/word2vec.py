@@ -67,13 +67,16 @@ def load_train_dat(args):
 
 def progress_bar(value):
 	out = '\rprogress : ['
-	for i in range(value):
+	v = value[1]
+	if not value[0]:
+		v -= 1
+	for i in range(v):
 		out += '=='
-	if value != 20:
+	if v != 20:
 		out += '>'
-	for i in range(20-value):
+	for i in range(20-v):
 		out += '  '
-	out += '] '+str(value*5)+'%'
+	out += '] '+str(v*5)+'%'
 
 	return out
 
@@ -93,7 +96,7 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	cost = tf.reduce_mean(nce_loss)
 
-	optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
+	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
 
@@ -115,11 +118,19 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 			avg_cost += c/float(dat.length)
 			
 			if state[0] or b%100 == 0:
-				print >> sys.stderr, progress_bar(state[1])+' '+str(b)+'/'+str(batch_number),
+				print >> sys.stderr, progress_bar(state)+' '+str(b)+'/'+str(batch_number),
 
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
 	return sess.run(wordv)
+
+def dump_vector(args, vocab, w):
+
+	fout = open(args.vector, 'w')
+	for i, v in enumerate(vocab):
+		out = ' '.join([str(val) for val in w[i]])
+		out = v + ' ' + out + '\n'
+		fout.write(out)
 
 def main():
 
@@ -133,7 +144,9 @@ def main():
 
 	dat = Data(train)
 
-	w_vector = skip_gram(dat=dat, sample_num=10, iteration=1, batch_size=100, learning_rate=0.05, vector_size=100, vocab_size=len(v2i))
+	w_vector = skip_gram(dat=dat, sample_num=10, iteration=2, batch_size=100, learning_rate=0.05, vector_size=100, vocab_size=len(v2i))
+
+	dump_vector(args, vocab_list, w_vector)
 
 if __name__ == '__main__':
 
