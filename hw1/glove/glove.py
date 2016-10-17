@@ -6,16 +6,14 @@ import sys
 class Data(object):
 	def __init__(self, train):
 		self.train = train
+		print >> sys.stderr, 'data shuffling'
+		np.random.shuffle(self.train)
 		self.current = 0
 		self.length = len(self.train)
 		self.iteration = 0
 		self.progress = 0
 	def next_batch(self, size):
 		
-		if self.current == 0:
-			print >> sys.stderr, 'data shuffling'
-			np.random.shuffle(self.train)
-
 		if self.current + size < self.length:
 			vid, co = self.train[self.current : self.current + size, 0:2], self.train[self.current : self.current + size, 2][None,:].T
 			max_index = np.where(co >= 100.)[0]
@@ -82,11 +80,11 @@ def load_train_dat(args):
 def progress_bar(value):
 	out = '\rprogress : ['
 	for i in range(value):
-		out += '=='
+		out += '='
 	if value != 50:
 		out += '>'
 	for i in range(50-value):
-		out += '  '
+		out += ' '
 	out += '] '+str(value*2)+'%'
 
 	return out
@@ -104,7 +102,7 @@ def dump_vector(args, vocab, wi, wj):
 		out = v + ' ' + out + '\n'
 		fout.write(out)
 
-def glove_model(dat, iteration, batch_size, learning_rate, alpha, x_max, vector_size, vocab_size):
+def glove_model(args, dat, iteration, batch_size, learning_rate, alpha, x_max, vector_size, vocab_size):
 
 	v_pair = tf.placeholder(tf.int32, [None, 2])
 	xij = tf.placeholder(tf.float32, [None, 1])
@@ -150,7 +148,7 @@ def glove_model(dat, iteration, batch_size, learning_rate, alpha, x_max, vector_
 
 			if state[0]:
 				print >> sys.stderr, progress_bar(state[1]),
-
+			
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
 	args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
@@ -169,7 +167,7 @@ def main():
 
 	dat = Data(train)
 
-	wi, wj = glove_model(dat=dat, iteration=50, batch_size=100, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=300, vocab_size=len(v2i))
+	wi, wj = glove_model(args=args ,dat=dat, iteration=50, batch_size=100, learning_rate=0.05, alpha=0.75, x_max=100, vector_size=256, vocab_size=len(v2i))
 
 	dump_vector(args, vocab_list, wi, wj)
 

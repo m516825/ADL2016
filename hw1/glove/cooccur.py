@@ -49,6 +49,7 @@ def merge_cooccur(args, file_num, vocab_size):
 	min_id = float('Inf')
 	find_flag = 1
 	finished = 0
+	total_line = 0
 
 	while True:
 		working = file_num
@@ -62,6 +63,7 @@ def merge_cooccur(args, file_num, vocab_size):
 			if len(cur_dict) > 0:
 				for k, v in cur_dict.iteritems():
 					fout.write(str(int(k[0]))+' '+str(int(k[1]))+' '+str(v)+'\n')
+					total_line += 1
 				cur_dict = {}
 				finished += 1
 				print >> sys.stderr, '\r'+str(finished)+'/'+str(vocab_size), 
@@ -88,7 +90,7 @@ def merge_cooccur(args, file_num, vocab_size):
 	for i in range(file_num):
 		os.remove(args.cooccur+'_'+str(i)+'.out')
 
-	print ''
+	print >> sys.stderr, '\ntotal data : '+str(total_line)
 
 def shuffle(tlist):
 	for i in range(len(tlist)):
@@ -157,6 +159,27 @@ def shuffle_cooccur(args):
 	for i in range(file_num):
 		os.remove(args.cooccur+'_s_'+str(i)+'.out') 
 
+def to_numpy(args):
+
+	numpy_list = []
+	current = 0
+	with open(args.cooccur+'_o.out', 'r') as f:
+		while True:
+			line = f.readline()
+			if not line:
+				break
+			current += 1
+			print >> sys.stderr, '\rdone processing '+str(current)+' lines',
+			line = line.strip().split()
+			numpy_list.append([int(line[0]), int(line[1]), float(line[2])])
+
+	os.remove(args.cooccur+'_o.out') 
+
+	print >> sys.stderr, '\nstart dumping numpy data'
+
+	numpy_list = np.array(numpy_list)
+	np.save(args.cooccur+'.npz', numpy_list)
+
 def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=True):
 
 	cooccur = {}
@@ -198,7 +221,7 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 
 				print >> sys.stderr, '\rdone process '+str(i)+'/'+str(total)+' tokens in currnet line',
 
-				if len(cooccur) >= 5000000 and i != 0 and not dumpAll:
+				if len(cooccur) >= 10000000 and i != 0 and not dumpAll:
 					with open(args.cooccur+'_'+str(file_num)+'.out', 'w') as ft:
 						for k, v in sorted(cooccur.iteritems(), key=lambda (k, v): int(k[0])):
 							out = str(k[0])+' '+str(k[1])+' '+str(v)+'\n'
@@ -224,25 +247,28 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=Tr
 		merge_cooccur(args, file_num, len(w2i))
 
 		print >> sys.stderr, 'done merging all small file'
+
+		to_numpy(args)
+
 	else:
 		if len(cooccur) > 0 and dumpAll:
+
 			cooccur_list = []
 			for k, v in cooccur.iteritems():
 				cooccur_list.append([int(k[0]), int(k[1]), float(v)])
 			cooccur = {}
 			# cooccur_list = shuffle(cooccur_list)
 			np_cooccur = np.array(cooccur_list)
-			np.random.shuffle(np_cooccur)
 			np.save(args.cooccur+'.npz', np_cooccur)
 
 		print >> sys.stderr, 'done dumping cooccur file'
-		sys.exit(0)
+		# sys.exit(0)
 			
-	print >> sys.stderr, 'start shuffling cooccur file'
+	# print >> sys.stderr, 'start shuffling cooccur file'
 
-	shuffle_cooccur(args)
+	# shuffle_cooccur(args)
 
-	print >> sys.stderr, 'done shuffling cooccur file'
+	# print >> sys.stderr, 'done shuffling cooccur file'
 
 		
 def main():
@@ -253,7 +279,7 @@ def main():
 
 	w2i, i2w = vocab_indeing(vocab_list)
 
-	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=10, vocab=vocab_list, symmetric=True, dumpAll=True)
+	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=10, vocab=vocab_list, symmetric=True, dumpAll=False)
 
 if __name__ == '__main__':
 
