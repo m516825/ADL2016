@@ -10,7 +10,7 @@ def arg_parse():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
-	parser.add_argument('--contextword', default='./skip_gram_r', type=str)
+	parser.add_argument('--contextword', default='./data/skip_gram_r', type=str)
 	parser.add_argument('--sample', default=9e-17, type=float)
 	args = parser.parse_args()
 

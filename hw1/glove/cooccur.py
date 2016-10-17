@@ -3,15 +3,13 @@ import sys
 import os
 import random
 import numpy as np
-import math
 
 def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
-	parser.add_argument('--contextword', default='./data/skip_gram', type=str)
-	parser.add_argument('--sample', default=9e-17, type=float)
+	parser.add_argument('--cooccur', default='./data/cooccur', type=str)
 	args = parser.parse_args()
 
 	return args
@@ -159,9 +157,9 @@ def shuffle_cooccur(args):
 	for i in range(file_num):
 		os.remove(args.cooccur+'_s_'+str(i)+'.out') 
 
-def build_cooccur(args, w2i, i2w, window_size, vocab, sum_c, i2c, dumpAll=True):
+def build_cooccur(args, w2i, i2w, window_size, vocab, symmetric=True, dumpAll=True):
 
-	cooccur = []
+	cooccur = {}
 	file_num = 0
 	with open(args.corpus, 'r') as f:
 		while True:
@@ -172,67 +170,80 @@ def build_cooccur(args, w2i, i2w, window_size, vocab, sum_c, i2c, dumpAll=True):
 			tokens = line.strip().split()
 
 			total = len(tokens)
-			i_tokens = []
-			for v in tokens:
-				vid = w2i.get(v, -1)
-				# subsampling in word2vec 'the' 0.629 'of' 0.841 at sample 9e-17
-				if vid != -1:
-					ran = (math.sqrt(float(i2c[vid])/args.sample * float(sum_c)) + 1) * (args.sample * float(sum_c) / float(i2c[vid]))
-					r = random.random()
-					if r > ran:
-						vid = -1
+			window = [-1]*window_size
+			tail = 0
 
-				i_tokens.append(vid)
-			tokens = []
-
-			for index, c_i in enumerate(i_tokens):
-				if c_i < 0:
+			for i, token in enumerate(tokens):
+				if token == '\n':
+					tail = 0
 					continue
-				lr = np.random.randint(window_size, size=1)[0] + 1
-				rr = np.random.randint(window_size, size=1)[0] + 1
-				if c_i - lr >= 0:
-					for i in range(c_i-lr, c_i):
-						if i_tokens[i] >= 0:
-							cooccur.append([c_i, i_tokens[i]])
-				else:
-					for i in range(0, c_i):
-						if i_tokens[i] >= 0:
-							cooccur.append([c_i, i_tokens[i]])
 
-				if c_i + rr < len(i_tokens):
-					for i in range(c_i+1, c_i+rr+1):
-						if i_tokens[i] >= 0:
-							cooccur.append([c_i, i_tokens[i]])
-				else:
-					for i in range(c_i+1, len(i_tokens)):
-						if i_tokens[i] >= 0:
-							cooccur.append([c_i, i_tokens[i]])
+				w2 = w2i.get(token, -1)
+				# if w2 == -1:
+				# 	continue
 
-				print >> sys.stderr, '\rdone process '+str(index)+'/'+str(total)+' tokens in currnet line',
+				current = tail - 1
+				head = tail - window_size - 1 if tail > window_size else 0 - 1
+
+				for index in range(current, head, -1):
+					w1 = window[index%window_size]
+
+					if w1 != -1 and w2 != -1:
+						cooccur[(w1, w2)] = cooccur.get((w1, w2), 0.) + 1./float(current-index+1)
+						if symmetric:
+							cooccur[(w2, w1)] = cooccur.get((w2, w1), 0.) + 1./float(current-index+1)
+
+				window[tail%window_size] = w2
+				tail += 1
+
+				print >> sys.stderr, '\rdone process '+str(i)+'/'+str(total)+' tokens in currnet line',
+
+				if len(cooccur) >= 5000000 and i != 0 and not dumpAll:
+					with open(args.cooccur+'_'+str(file_num)+'.out', 'w') as ft:
+						for k, v in sorted(cooccur.iteritems(), key=lambda (k, v): int(k[0])):
+							out = str(k[0])+' '+str(k[1])+' '+str(v)+'\n'
+							ft.write(out)
+						cooccur = {}
+					file_num += 1
 
 			print >> sys.stderr, ''
+
+		if len(cooccur) > 0 and not dumpAll:
+			with open(args.cooccur+'_'+str(file_num)+'.out', 'w') as ft:
+				for k, v in sorted(cooccur.iteritems(), key=lambda (k, v): int(k[0])):
+					out = str(k[0])+' '+str(k[1])+' '+str(v)+'\n'
+					ft.write(out)
+				cooccur = {}
+			file_num += 1
+
 	
 	
-	if len(cooccur) > 0 and dumpAll:
-		np_cooccur = np.array(cooccur)
-		np.random.shuffle(np_cooccur)
-		np.save(args.contextword+'.npz', np_cooccur)
+	if not dumpAll:
+		print >> sys.stderr, 'done dumping all small cooccur file'
 
-	print >> sys.stderr, 'done dumping skip-gram pair file'
+		merge_cooccur(args, file_num, len(w2i))
 
-def load_vocab_info(vocab_file):
-	sum_c = 0
-	i2c = {}
-	count_list = []
-	with open(vocab_file, 'r') as f:
-		for line in f.readlines():
-			count = int(line.strip().split()[1])
-			count_list.append(count)
-	for i, c in enumerate(count_list):
-		sum_c += c
-		i2c[i] = c
+		print >> sys.stderr, 'done merging all small file'
+	else:
+		if len(cooccur) > 0 and dumpAll:
+			cooccur_list = []
+			for k, v in cooccur.iteritems():
+				cooccur_list.append([int(k[0]), int(k[1]), float(v)])
+			cooccur = {}
+			# cooccur_list = shuffle(cooccur_list)
+			np_cooccur = np.array(cooccur_list)
+			np.random.shuffle(np_cooccur)
+			np.save(args.cooccur+'.npz', np_cooccur)
 
-	return sum_c, i2c
+		print >> sys.stderr, 'done dumping cooccur file'
+		sys.exit(0)
+			
+	print >> sys.stderr, 'start shuffling cooccur file'
+
+	shuffle_cooccur(args)
+
+	print >> sys.stderr, 'done shuffling cooccur file'
+
 		
 def main():
 
@@ -242,9 +253,8 @@ def main():
 
 	w2i, i2w = vocab_indeing(vocab_list)
 
-	sum_c, i2c = load_vocab_info(args.vocab)
-
-	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=5, vocab=vocab_list, sum_c=sum_c, i2c=i2c, dumpAll=True)
+	build_cooccur(args=args, w2i=w2i, i2w=i2w, window_size=10, vocab=vocab_list, symmetric=True, dumpAll=True)
 
 if __name__ == '__main__':
+
 	main()

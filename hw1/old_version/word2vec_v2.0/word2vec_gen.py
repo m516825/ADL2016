@@ -74,7 +74,7 @@ def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
-	parser.add_argument('--train', default='./data/skip_gram.npz.npy', type=str)
+	parser.add_argument('--train', default='./skip_gram.npz.npy', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
 	parser.add_argument('--vector', default='./w2_vector.txt', type=str)
 	args = parser.parse_args()
@@ -137,7 +137,7 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 
 	cost = tf.reduce_mean(nce_loss)
 
-	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
+	optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
 
 	init = tf.initialize_all_variables()
 

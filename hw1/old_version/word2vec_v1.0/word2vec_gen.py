@@ -74,7 +74,7 @@ def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
-	parser.add_argument('--train', default='./data/skip_gram.npz.npy', type=str)
+	parser.add_argument('--train', default='./skip_gram.npz.npy', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
 	parser.add_argument('--vector', default='./w2_vector.txt', type=str)
 	args = parser.parse_args()

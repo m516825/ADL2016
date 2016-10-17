@@ -34,9 +34,9 @@ def arg_parse():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--corpus', default='../data/hw1/text8', type=str)
-	parser.add_argument('--train', default='./data/skip_gram_r.npz.npy', type=str)
+	parser.add_argument('--train', default='./skip_gram_r.npz.npy', type=str)
 	parser.add_argument('--vocab', default='./vocab.out', type=str)
-	parser.add_argument('--vector', default='./w2_vector', type=str)
+	parser.add_argument('--vector', default='./w2_vector.txt', type=str)
 	args = parser.parse_args()
 
 	return args
@@ -122,8 +122,6 @@ def skip_gram(dat, sample_num, iteration, batch_size, learning_rate, vector_size
 					print >> sys.stderr, progress_bar(state)+' '+str(b)+'/'+str(batch_number),
 
 			print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
-
-		args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_neg['+str(sample_num)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
 
 		return wordv.eval()
 
