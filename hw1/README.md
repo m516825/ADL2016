@@ -1,6 +1,6 @@
-#### ADL hw1
+### ADL hw1
 
-- usage:
+#### usage:
 
 You should place the training corpus, 'text8' and 'ptt_corpus.txt' in ./corpus folder
 before using the following instructions.
