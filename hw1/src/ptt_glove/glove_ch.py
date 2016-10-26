@@ -160,7 +160,7 @@ def glove_model(args, dat, iteration, batch_size, learning_rate, alpha, x_max, v
 			
 		print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
-	args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
+	# args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
 
 	return sess.run(wi), sess.run(wj)
 

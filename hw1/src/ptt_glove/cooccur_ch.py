@@ -7,7 +7,7 @@ import numpy as np
 def arg_parse():
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--corpus', default='./corpus/ptt_corpus_title.txt', type=str)
+	parser.add_argument('--corpus', default='./ptt_corpus_title.txt', type=str)
 	parser.add_argument('--vocab', default='./vocab_ch.out', type=str)
 	parser.add_argument('--cooccur', default='./cooccur_ch', type=str)
 	args = parser.parse_args()

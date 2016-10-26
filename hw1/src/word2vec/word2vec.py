@@ -122,7 +122,7 @@ def skip_gram(args, dat, sample_num, iteration, batch_size, learning_rate, vecto
 
 			print >> sys.stderr, '\r>>> cost : '+str(avg_cost) + '                                                   '
 
-		args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_neg['+str(sample_num)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
+		# args.vector += '_ite['+str(iteration)+']_bat['+str(batch_size)+']_neg['+str(sample_num)+']_vec['+str(vector_size)+']_eta['+str(learning_rate)+'].txt'
 
 		return wordv.eval()
 
