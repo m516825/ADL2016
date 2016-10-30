@@ -1,5 +1,7 @@
 ### ADL hw1
 
+report has been placed in ./report.pdf
+
 #### usage:
 
 You should place the training corpus, 'text8' and 'ptt_corpus.txt' in ./corpus folder
