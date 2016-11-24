@@ -1,1 +1,0 @@
-python run_multi-task_rnn.py --data_dir ./ADL_data --train_dir=model_tmp --max_sequence_length=50 --task=tagging --bidirectional_rnn=True
