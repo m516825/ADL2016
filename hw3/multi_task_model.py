@@ -63,10 +63,10 @@ class MultiTaskModel(object):
     self.labels = []    
     self.sequence_length = tf.placeholder(tf.int32, [None], name="sequence_length")
     
-    for i in xrange(buckets[-1][0]):
+    for i in xrange(buckets[-1][0]): # max input sequence
       self.encoder_inputs.append(tf.placeholder(tf.int32, shape=[None],
                                                 name="encoder{0}".format(i)))
-    for i in xrange(buckets[-1][1]):
+    for i in xrange(buckets[-1][1]): # max output sequence
       self.tags.append(tf.placeholder(tf.float32, shape=[None], name="tag{0}".format(i)))
       self.tag_weights.append(tf.placeholder(tf.float32, shape=[None],
                                                 name="weight{0}".format(i)))

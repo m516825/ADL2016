@@ -41,11 +41,15 @@ def generate_embedding_RNN_output(encoder_inputs,
       embedding = variable_scope.get_variable("embedding", [num_encoder_symbols, word_embedding_size])
       encoder_embedded_inputs = list()
       encoder_embedded_inputs = [embedding_ops.embedding_lookup(embedding, encoder_input) for encoder_input in encoder_inputs]  
+      # dim 256 (128f, 128b), dim 256(128c, 128h), dim 256(128c, 128h)
       encoder_outputs, encoder_state_fw, encoder_state_bw = rnn.bidirectional_rnn(
           encoder_cell_fw, encoder_cell_bw, encoder_embedded_inputs, sequence_length=sequence_length, dtype=dtype)
+      # dim 512 (256+256)
       encoder_state = array_ops.concat(1, [array_ops.concat(1, encoder_state_fw), array_ops.concat(1, encoder_state_bw)])
+      # dim [?, 1, 256] * 50(max sequence len)
       top_states = [array_ops.reshape(e, [-1, 1, cell.output_size*2])
                     for e in encoder_outputs]
+      # dim [?, 50, 256]
       attention_states = array_ops.concat(1, top_states)
     else:
       encoder_cell = cell

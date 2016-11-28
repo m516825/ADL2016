@@ -256,7 +256,7 @@ def train():
     train_set = read_data(in_seq_train, out_seq_train, label_train)
     train_bucket_sizes = [len(train_set[b]) for b in xrange(len(_buckets))]
     train_total_size = float(sum(train_bucket_sizes))
-
+    # lookup table 
     train_buckets_scale = [sum(train_bucket_sizes[:i + 1]) / train_total_size
                            for i in xrange(len(train_bucket_sizes))]
 
@@ -270,6 +270,7 @@ def train():
 
     if FLAGS.predict == False:
       while model.global_step.eval() < FLAGS.max_training_steps:
+        # sample according to dataset size
         random_number_01 = np.random.random_sample()
         bucket_id = min([i for i in xrange(len(train_buckets_scale))
                          if train_buckets_scale[i] > random_number_01])
