@@ -1,0 +1,1039 @@
+inform _NAME_ _GOODFORMEAL_ _FOOD_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform_no_match _AREA_
+inform _NAME_ _GOODFORMEAL_ _AREA_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _NEAR_
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _FOOD_
+goodbye 
+inform_no_match _KIDSALLOWED_ _AREA_
+inform_no_match _NEAR_ _AREA_
+inform _NAME_ _AREA_
+inform _NAME_ _AREA_ _KIDSALLOWED_
+inform _NAME_ _PRICE_
+inform _NAME_ _ADDRESS_
+goodbye 
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform_only_match _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PRICERANGE_ _NEAR_
+goodbye 
+inform_no_match _AREA_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _NEAR_ _PRICERANGE_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _NEAR_ _PRICERANGE_
+request area
+inform _NAME_ _PRICE_ _PHONE_
+inform _NAME_ _GOODFORMEAL_ _NEAR_ _PRICERANGE_
+goodbye 
+confirm _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _FOOD_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request food
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _FOOD_
+request area
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _FOOD_
+request pricerange
+inform _NAME_ _PRICERANGE_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _NEAR_
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+request pricerange
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform_only_match _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform_only_match _NAME_ _PRICERANGE_ _GOODFORMEAL_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform_no_match _FOOD_ _PRICERANGE_
+confirm _PRICERANGE_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform _NAME_ _FOOD_
+inform _NAME_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_ _FOOD_
+inform _NAME_ _PHONE_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _TYPE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+inform _NAME_ _NEAR_ _GOODFORMEAL_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _NEAR_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _NEAR_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform_no_match _FOOD_ _PRICERANGE_
+inform _NAME_ _FOOD_
+inform _NAME_ _PHONE_ _POSTCODE_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_ _NEAR_ _KIDSALLOWED_
+reqmore 
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _FOOD_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+inform _NAME_ _PRICE_
+goodbye 
+request food
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _ADDRESS_
+goodbye 
+request pricerange
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request food
+inform _NAME_ _GOODFORMEAL_ _AREA_ _PRICERANGE_
+reqmore 
+inform _NAME_ _NEAR_ _ADDRESS_ _PHONE_
+goodbye 
+request pricerange
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _NEAR_
+inform_count _TYPE_ _COUNT_ _NEAR_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _NEAR_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _FOOD_
+goodbye 
+request pricerange
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_
+request area
+inform _NAME_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_
+request area
+goodbye 
+inform _NAME_ _AREA_ _PRICERANGE_ _GOODFORMEAL_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _PRICERANGE_ _AREA_
+select _KIDSALLOWED_ _KIDSALLOWED_
+confirm _AREA_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _AREA_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform_no_match _FOOD_ _AREA_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _TYPE_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+inform _NAME_ _KIDSALLOWED_
+confirm _NEAR_
+inform _NAME_ _NEAR_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _GOODFORMEAL_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _TYPE_
+inform_only_match _NAME_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PRICERANGE_
+goodbye 
+inform_no_match _FOOD_ _PRICERANGE_
+inform _NAME_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_
+confirm _AREA_
+inform _NAME_ _ADDRESS_
+goodbye 
+request pricerange
+inform _NAME_ _NEAR_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _FOOD_
+inform _NAME_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+request pricerange
+inform_no_match _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_
+goodbye 
+inform _NAME_ _NEAR_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform _NAME_ _KIDSALLOWED_ _NEAR_
+inform _NAME_ _FOOD_ _ADDRESS_
+inform _NAME_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+confirm _PRICERANGE_
+confirm _PRICERANGE_
+inform _NAME_ _TYPE_
+request pricerange
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+request food
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _AREA_
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+inform_no_match _AREA_ _PRICERANGE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+request near
+inform _NAME_ _PRICERANGE_ _FOOD_ _KIDSALLOWED_
+inform_no_match _KIDSALLOWED_ _FOOD_
+goodbye 
+inform _NAME_ _FOOD_
+inform_count _TYPE_ _COUNT_ _FOOD_
+request goodformeal
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _FOOD_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _FOOD_
+inform _NAME_ _PRICERANGE_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _FOOD_ _NEAR_
+inform _NAME_ _FOOD_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _GOODFORMEAL_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _KIDSALLOWED_
+request food
+inform _NAME_ _FOOD_ _GOODFORMEAL_ _KIDSALLOWED_
+inform _NAME_ _FOOD_ _NEAR_ _GOODFORMEAL_ _KIDSALLOWED_
+inform _NAME_ _FOOD_ _NEAR_ _GOODFORMEAL_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _NEAR_
+inform _NAME_ _NEAR_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _AREA_
+inform _NAME_ _ADDRESS_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+request goodformeal
+goodbye 
+inform_no_match _NEAR_ _PRICERANGE_
+select _FOOD_
+inform_no_match _FOOD_ _NEAR_ _PRICERANGE_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _GOODFORMEAL_ _FOOD_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+request area
+request area
+request goodformeal
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _PRICERANGE_ _ADDRESS_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+request pricerange
+inform_no_match _GOODFORMEAL_ _FOOD_
+inform_no_match _FOOD_ _GOODFORMEAL_
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform_only_match _NAME_ _KIDSALLOWED_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _KIDSALLOWED_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _NEAR_ _GOODFORMEAL_
+inform _NAME_ _PRICERANGE_ _NEAR_ _GOODFORMEAL_
+inform_only_match _NAME_ _PRICERANGE_ _NEAR_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _PRICERANGE_
+request goodformeal
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _NEAR_ _PRICE_
+inform _NAME_ _PHONE_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _PRICERANGE_
+request goodformeal
+goodbye 
+inform_no_match _NEAR_ _GOODFORMEAL_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _NEAR_
+inform _NAME_ _GOODFORMEAL_ _KIDSALLOWED_ _NEAR_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _AREA_
+inform _NAME_ _NEAR_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _AREA_
+goodbye 
+request pricerange
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _GOODFORMEAL_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _PRICE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _NEAR_
+inform _NAME_ _FOOD_ _NEAR_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+request food
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _NEAR_ _PRICERANGE_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _NEAR_ _PRICERANGE_
+inform _NAME_ _NEAR_ _PRICERANGE_
+goodbye 
+request goodformeal
+inform _NAME_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _POSTCODE_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+goodbye 
+request pricerange
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _NEAR_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _FOOD_
+goodbye 
+inform _NAME_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+request near
+inform _NAME_ _PRICERANGE_ _FOOD_ _KIDSALLOWED_
+inform_no_match _KIDSALLOWED_ _FOOD_
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _PRICERANGE_
+inform_no_match _NEAR_ _PRICERANGE_
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _PRICERANGE_
+request food
+inform_no_match _AREA_ _KIDSALLOWED_ _PRICERANGE_
+goodbye 
+request pricerange
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_ _NEAR_
+inform _NAME_ _PRICERANGE_ _PHONE_
+goodbye 
+request near
+request pricerange
+goodbye 
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _AREA_
+request food
+inform _NAME_ _FOOD_ _AREA_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+goodbye 
+request pricerange
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _GOODFORMEAL_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _PRICE_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _NEAR_
+inform _NAME_ _PHONE_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+request pricerange
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request near
+request pricerange
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _NEAR_
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _FOOD_
+inform _NAME_ _FOOD_
+goodbye 
+confirm _FOOD_
+inform _NAME_ _FOOD_ _GOODFORMEAL_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+select _GOODFORMEAL_
+request food
+select _PRICERANGE_
+select _PRICERANGE_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _PRICERANGE_
+request area
+goodbye 
+inform_count _TYPE_ _COUNT_ _FOOD_ _PRICERANGE_
+request area
+inform _NAME_ _KIDSALLOWED_ _FOOD_ _PRICERANGE_
+inform _NAME_ _AREA_ _FOOD_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_
+inform _NAME_ _PHONE_
+goodbye 
+request goodformeal
+inform _NAME_ _NEAR_
+inform _NAME_ _TYPE_
+inform_only_match _NAME_ _GOODFORMEAL_ _NEAR_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+goodbye 
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+select _FOOD_
+goodbye 
+inform _NAME_ _PRICERANGE_ _NEAR_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _FOOD_ _ADDRESS_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_ _FOOD_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+request near
+inform _NAME_ _NEAR_ _KIDSALLOWED_ _PRICERANGE_ _FOOD_
+inform _NAME_ _POSTCODE_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _GOODFORMEAL_ _AREA_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _PRICE_ _PHONE_
+goodbye 
+request area
+inform _NAME_ _AREA_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform_no_match _AREA_ _PRICERANGE_
+request near
+goodbye 
+inform _NAME_ _NEAR_
+inform_only_match _NAME_ _NEAR_
+inform _NAME_ _GOODFORMEAL_ _NEAR_
+inform_only_match _NAME_ _KIDSALLOWED_ _GOODFORMEAL_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PRICERANGE_
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _NEAR_
+goodbye 
+request goodformeal
+inform _NAME_ _NEAR_
+inform _NAME_ _TYPE_
+inform_only_match _NAME_ _GOODFORMEAL_ _NEAR_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_
+request food
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PHONE_ _POSTCODE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _AREA_
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+inform_no_match _AREA_ _PRICERANGE_
+goodbye 
+inform _NAME_ _AREA_ _PRICERANGE_
+inform _NAME_ _FOOD_ _PHONE_
+goodbye 
+select _NEAR_
+inform _NAME_ _AREA_
+inform _NAME_ _AREA_
+inform _NAME_ _AREA_
+request food
+inform _NAME_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_
+request pricerange
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _NEAR_ _PHONE_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _AREA_
+inform _NAME_ _GOODFORMEAL_ _FOOD_
+confirm _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_ _AREA_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+request food
+request food
+inform _NAME_ _NEAR_
+inform _NAME_ _ADDRESS_ _PHONE_
+reqmore 
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PRICE_
+goodbye 
+request area
+inform_count _TYPE_ _COUNT_ _AREA_
+request food
+inform _NAME_ _AREA_ _FOOD_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+goodbye 
+request area
+inform _NAME_ _NEAR_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+reqmore 
+inform _NAME_ _PRICERANGE_
+goodbye 
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+request pricerange
+inform_no_match _FOOD_ _GOODFORMEAL_
+inform_count _TYPE_ _COUNT_ _FOOD_
+request pricerange
+inform _NAME_ _TYPE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform_no_match _FOOD_ _GOODFORMEAL_
+inform _NAME_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _GOODFORMEAL_ _FOOD_
+inform _NAME_ _PHONE_
+inform _NAME_ _NEAR_
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_ _NEAR_
+confirm _NEAR_
+inform _NAME_ _NEAR_ _KIDSALLOWED_ _PRICERANGE_
+confirm _NEAR_
+inform_only_match _NAME_ _NEAR_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _ADDRESS_ _PHONE_ _POSTCODE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _NEAR_
+inform _NAME_ _NEAR_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_
+request goodformeal
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _FOOD_ _KIDSALLOWED_
+request pricerange
+confirm _GOODFORMEAL_
+inform _NAME_ _GOODFORMEAL_ _PRICERANGE_ _KIDSALLOWED_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _GOODFORMEAL_
+goodbye 
+inform _NAME_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_ _PRICERANGE_
+request near
+inform _NAME_ _PRICERANGE_ _FOOD_ _KIDSALLOWED_
+inform_no_match _KIDSALLOWED_ _FOOD_
+goodbye 
+request pricerange
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _PRICE_ _PHONE_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _KIDSALLOWED_ _PRICERANGE_
+request near
+goodbye 
+inform_no_match _KIDSALLOWED_ _FOOD_
+inform _NAME_ _FOOD_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _NEAR_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _PHONE_ _POSTCODE_
+inform _NAME_ _ADDRESS_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _KIDSALLOWED_
+request area
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _PRICERANGE_ _PHONE_
+goodbye 
+request near
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _FOOD_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+request goodformeal
+inform _NAME_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+inform _NAME_ _TYPE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_ _FOOD_
+inform_only_match _NAME_ _KIDSALLOWED_ _PRICERANGE_ _FOOD_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _NEAR_
+goodbye 
+request pricerange
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+inform_no_match _AREA_
+goodbye 
+request goodformeal
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request food
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _FOOD_
+request area
+request goodformeal
+request goodformeal
+confirm _GOODFORMEAL_
+inform_no_match _FOOD_ _GOODFORMEAL_
+inform_no_match _FOOD_ _GOODFORMEAL_
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+reqmore 
+reqmore 
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _FOOD_
+inform _NAME_ _AREA_
+inform _NAME_ _TYPE_
+inform_no_match _FOOD_ _NEAR_ _KIDSALLOWED_
+request area
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+inform _NAME_ _AREA_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+confirm _PRICERANGE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+request food
+inform _NAME_ _FOOD_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+inform _NAME_ _NEAR_
+inform_count _TYPE_ _COUNT_ _NEAR_
+request pricerange
+inform _NAME_ _PRICERANGE_ _NEAR_
+inform _NAME_ _NEAR_ _PRICERANGE_
+inform _NAME_ _PHONE_
+inform _NAME_ _POSTCODE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _FOOD_
+request pricerange
+inform _NAME_ _AREA_ _PRICE_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+goodbye 
+inform _NAME_ _PRICERANGE_ _GOODFORMEAL_
+reqmore 
+inform _NAME_ _PHONE_
+goodbye 
+inform _NAME_ _AREA_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _AREA_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _AREA_
+request food
+inform _NAME_ _FOOD_ _KIDSALLOWED_ _AREA_
+inform _NAME_ _ADDRESS_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request pricerange
+request pricerange
+request pricerange
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform_no_match _PRICERANGE_ _GOODFORMEAL_
+goodbye 
+inform _NAME_ _FOOD_
+reqmore 
+inform _NAME_ _TYPE_
+inform _NAME_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _AREA_ _KIDSALLOWED_ _PRICERANGE_
+inform _NAME_ _NEAR_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_ _PRICERANGE_
+inform_only_match _NAME_ _KIDSALLOWED_ _AREA_ _PRICERANGE_
+inform _NAME_ _ADDRESS_ _PRICE_
+goodbye 
+confirm _PRICERANGE_
+request area
+request goodformeal
+select _NEAR_
+select _AREA_
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform _NAME_ _NEAR_
+inform_only_match _NAME_ _NEAR_
+reqmore 
+inform _NAME_ _ADDRESS_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request near
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+select _KIDSALLOWED_ _KIDSALLOWED_
+confirm _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _GOODFORMEAL_
+request area
+inform _NAME_ _AREA_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+goodbye 
+inform_count _TYPE_ _COUNT_ _FOOD_ _PRICERANGE_
+request goodformeal
+inform _NAME_ _GOODFORMEAL_ _PRICERANGE_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _AREA_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _AREA_
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _PRICE_ _PHONE_
+goodbye 
+inform _NAME_ _AREA_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _PRICERANGE_ _AREA_
+request food
+inform_count _TYPE_ _COUNT_ _PRICERANGE_ _AREA_
+request food
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _PRICERANGE_ _AREA_
+request food
+goodbye 
+select _KIDSALLOWED_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_
+request pricerange
+inform _NAME_ _PRICERANGE_ _KIDSALLOWED_
+inform _NAME_ _GOODFORMEAL_ _AREA_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _NEAR_
+inform _NAME_ _NEAR_ _FOOD_
+inform _NAME_ _PHONE_
+inform _NAME_ _ADDRESS_
+goodbye 
+inform _NAME_ _AREA_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+confirm _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _AREA_ _KIDSALLOWED_
+inform_no_match _AREA_ _GOODFORMEAL_
+goodbye 
+inform_no_match _AREA_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _ADDRESS_
+goodbye 
+inform_no_match _PRICERANGE_ _AREA_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _AREA_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICERANGE_
+goodbye 
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _NEAR_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform _NAME_ _TYPE_
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_ _PRICERANGE_
+request near
+goodbye 
+inform_count _TYPE_ _COUNT_ _KIDSALLOWED_
+request goodformeal
+inform _NAME_ _FOOD_ _KIDSALLOWED_
+inform_count _TYPE_ _COUNT_ _FOOD_ _KIDSALLOWED_
+request goodformeal
+inform _NAME_ _GOODFORMEAL_ _FOOD_ _KIDSALLOWED_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _NEAR_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _PRICERANGE_ _AREA_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _KIDSALLOWED_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _TYPE_
+inform _NAME_ _ADDRESS_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform _NAME_ _PRICE_
+goodbye 
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _KIDSALLOWED_
+inform _NAME_ _KIDSALLOWED_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _PHONE_
+inform _NAME_ _AREA_
+goodbye 
+request pricerange
+request pricerange
+inform _NAME_ _FOOD_
+inform_no_match _GOODFORMEAL_ _FOOD_
+inform _NAME_ _FOOD_
+inform _NAME_ _GOODFORMEAL_
+inform _NAME_ _PHONE_
+inform _NAME_ _PRICE_
+goodbye 
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _GOODFORMEAL_ _NEAR_ _PRICERANGE_
+inform _NAME_ _TYPE_
+inform _NAME_ _AREA_ _PHONE_
+goodbye 
+request area
+confirm _AREA_
+confirm _AREA_
+request pricerange
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _FOOD_ _ADDRESS_ _PHONE_
+goodbye 
+inform_no_match _FOOD_ _NEAR_
+inform _NAME_ _FOOD_ _NEAR_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _KIDSALLOWED_
+goodbye 
+request goodformeal
+inform _NAME_ _GOODFORMEAL_ _KIDSALLOWED_
+goodbye 
+inform _NAME_ _PRICERANGE_ _FOOD_
+inform_count _TYPE_ _COUNT_ _FOOD_ _PRICERANGE_
+request area
+inform _NAME_ _AREA_ _PRICERANGE_ _FOOD_
+inform _NAME_ _ADDRESS_
+inform _NAME_ _POSTCODE_
+goodbye 
+inform_no_match _FOOD_ _KIDSALLOWED_
+inform _NAME_ _PRICERANGE_
+inform _NAME_ _ADDRESS_ _PRICE_
+goodbye 
+goodbye 
+request food
+request food
+request food
+request food
+goodbye 
+inform _NAME_ _KIDSALLOWED_ _PRICERANGE_ _NEAR_
+inform _NAME_ _TYPE_
+inform _NAME_ _PHONE_
+inform _NAME_ _FOOD_
+goodbye 
+request pricerange
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request food
+confirm _PRICERANGE_
+request near
+request pricerange
+request pricerange
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request near
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request food
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request area
+request pricerange
+inform_count _TYPE_ _COUNT_ _PRICERANGE_
+request near
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_ _PRICERANGE_
+request food
+inform _NAME_ _FOOD_ _PRICERANGE_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_
+reqmore 
+inform _NAME_ _NEAR_
+goodbye 
+inform_count _TYPE_ _COUNT_ _GOODFORMEAL_
+request area
+inform _NAME_ _NEAR_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_ _PHONE_
+inform _NAME_ _PHONE_
+goodbye 
+inform _NAME_ _FOOD_ _GOODFORMEAL_
+inform _NAME_ _ADDRESS_ _PRICE_
+goodbye 
