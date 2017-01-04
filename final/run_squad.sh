@@ -8,4 +8,4 @@ for (( i=15; i<=20; i=i+1 ))
 do
     python3 -m basic.cli --run_id 1 --len_opt --cluster --batch_size 20 --model './out/basic/01/save/basic-'$i'000'
 done
-python pos_process_ensemble.py --data_dir './Squad' --test $1 --ans $2
+python2.7 pos_process_ensemble.py --data_dir './Squad' --test $1 --ans $2
