@@ -13,6 +13,7 @@ def arg_parse():
 	parser.add_argument('--cmp', default='F1', type=str)
 	parser.add_argument('--verbose', default=False, type=bool)
 	parser.add_argument('--verbose_s', default=False, type=bool)
+	parser.add_argument('--t', default=0., type=float)
 	parser.add_argument('--test', default='testing_data.json', type=str)
 	# parser.add_argument('--pred', default='../dev-020000.json', type=str)
 	args = parser.parse_args()
@@ -103,7 +104,7 @@ def main():
 	count = np.zeros((len(source), len(source[0]['answer_list'])))
 	for ans in answer:
 		for i, pair in enumerate(ans):
-			if pair[1] > 0.:
+			if pair[1] > args.t:
 				count[i][pair[0]] += 1
 	answer = [np.argmax(c) for c in count]
 	if args.verbose:
