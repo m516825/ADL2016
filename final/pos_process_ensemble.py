@@ -18,12 +18,9 @@ def arg_parse():
 	# parser.add_argument('--pred', default='../dev-020000.json', type=str)
 	args = parser.parse_args()
 	if args.data_dir == './Squad':
-		args.pred = ['./out/basic/00/answer/test-020000.json', './out/basic/00/answer/test-019000.json', \
-					'./out/basic/00/answer/test-018000.json', './out/basic/00/answer/test-017000.json', \
-                    './out/basic/00/answer/test-016000.json', './out/basic/01/answer/test-020000.json', \
-                    './out/basic/01/answer/test-019000.json', './out/basic/01/answer/test-018000.json', \
-                    './out/basic/01/answer/test-017000.json', './out/basic/01/answer/test-016000.json', \
-                    './out/basic/00/answer/test-015000.json', './out/basic/01/answer/test-015000.json']
+		args.pred = ['./out/basic/00/answer/test-020000.json', './out/basic/00/answer/test-016000.json', \
+                    './out/basic/00/answer/test-015000.json', './out/basic/01/answer/test-020000.json', \
+                    './out/basic/01/answer/test-015000.json']
 	else:
 		args.pred = ['./out/basic/00/answer/test-020000.json', './out/basic/00/answer/test-019000.json', \
                     './out/basic/00/answer/test-018000.json', './out/basic/00/answer/test-017000.json', \
