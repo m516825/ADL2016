@@ -24,10 +24,7 @@ def arg_parse():
 	else:
 		args.pred = ['./out/basic/00/answer/test-020000.json', './out/basic/00/answer/test-019000.json', \
                     './out/basic/00/answer/test-018000.json', './out/basic/00/answer/test-017000.json', \
-                    './out/basic/00/answer/test-016000.json', './out/basic/01/answer/test-020000.json', \
-                    './out/basic/01/answer/test-019000.json', './out/basic/01/answer/test-018000.json', \
-                    './out/basic/01/answer/test-017000.json', './out/basic/01/answer/test-016000.json', \
-                    './out/basic/00/answer/test-015000.json', './out/basic/01/answer/test-015000.json']
+                    './out/basic/00/answer/test-016000.json']
 
 	print args.pred
 
